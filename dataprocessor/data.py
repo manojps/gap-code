@@ -1,12 +1,9 @@
-"""
-This class pre-processes the data for EDA.
-"""
-
 from __future__ import unicode_literals, print_function
 import pandas as pd
 
 
 class Data(object):
+    """ This class is the parent data class. """
 
     def __init__(self, df):
         """

@@ -5,10 +5,18 @@ from dataprocessor.data import Data
 
 
 class EdaData(Data):
+    """ This class pre-process data for EDA. """
 
     nlp = load('en_core_web_sm')
 
     def __init__(self, df):
+        """
+        Constructs a new EdaData object
+
+        :param df: A Pandas dataframe
+        :type df: pandas.core.frame.DataFrame
+        :return: Returns nothing
+        """
         super().__init__(df)
         self.df['Text-len'] = self.df.Text.str.len()
         self.df['Word-count'] = self.df.Text.str.split().str.len()
@@ -113,13 +121,13 @@ class EdaData(Data):
         return
 
     @staticmethod
-    def pronouns(df):
+    def unique_pronouns(df):
         """
-        Get a list of all unique pronouns in the dataset.
+        Get the list of unique pronouns in the dataset.
 
         :param df: A Pandas dataframe
         :type df: pandas.core.frame.DataFrame
         :return: List of dataframe indexes
-        :rtype: numpy.ndarray
+        :rtype: list
         """
         return df.index.tolist()
